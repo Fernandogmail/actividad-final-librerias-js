@@ -1,4 +1,5 @@
 $(function(){
+	
 	//funcion ca,bia color titulo a gris, luego llama la funcion que repone color original
 	function cambiarColorTitulo(elemento){
 		$(elemento).animate({
@@ -19,24 +20,41 @@ $(function(){
 	function interzaccionTitulo(){
 		cambiarColorTitulo($('.main-titulo'))
 	}
+	//invocacion funcion interaccion titulo.
+	interzaccionTitulo();
 
-$('.btn-reinicio').click(function(){
 	var images=[
 		'1.png',
 		'2.png',
 		'3.png',
 		'4.png',
-
 	]
-	var image = images [Math.floor (Math.random () * images.length)]
-	$('div[class *= col]').append('<img src="image/'+image+'"></img> ')
-	$('div[class *= col]').append('<img src="image/'+image+'"></img> ')
-	$('div[class *= col]').append('<img src="image/'+image+'"></img> ')
-	$('div[class *= col]').append('<img src="image/'+image+'"></img> ')
-	$('div[class *= col]').append('<img src="image/'+image+'"></img> ')
+	var contDiv =[
+		'.col-1',
+		'.col-2',
+		'.col-3',
+		'.col-4',
+		'.col-5',
+		'.col-6',
+		'.col-7',
+	]
+	// funcion generar imagen aleatoria en el tablero inicio.
+	function generarImg(){
+		for (var i = 0; i < contDiv.length; i++) {
+			 for (var j = 0; j < 5; j++) {	 	
+		var imagen = images [Math.floor (Math.random () * images.length)]	
+	 	$(contDiv[i]).append('<img src="image/'+imagen+'"></img> ')	 	
+	 		}	
+		 }
+	}
 	
-})
-	//invocacion funcion interaccion titulo.
-	interzaccionTitulo();
+	
+generarImg()
+
+function eliminarImgIguales(){
+	var valor = $('img').attr('src');
+	alert(valor)
+}
+eliminarImgIguales()
 	
 })
